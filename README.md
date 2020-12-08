@@ -10,10 +10,14 @@ This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
 ### How to install
 - Create a normal SWG-Explicit auth policy with Kerberos, ensure that Kerberos auth works as expected (attached to LTM VIP)
       `Start -> 407 -> Kerberos Auth -> Allow`
+
 - Remove the 407 agent from the SWG-Explicit auth policy VPE
+
 - Attach this iRule to the explicit proxy listener virtual server (-xp VIP in SSLO)
-- Modify the *AUTH_PROFILE* variable to reflect the name of the SWG-Explicit auth policy
-- Modify the *AUTH_SESSION_TIMER* variable to reflect needed to store "authenticated" user (shorter times more secure, but validate more often)
-- Modify the *DEBUG_AUTH* variable to enable/disable debug logging to /var/log/ltm
-- Modify the *FAILED_AUTH_ATTEMPTS* variable to enable and set a failed logon attempt counter
-- Modify the *FAILED_AUTH_TIMER* variable to adjust the time (in seconds) to track failed logon attempts for a connection
+
+- Modify the following static configuration variables as required:
+      - Modify the **AUTH_PROFILE** variable to reflect the name of the SWG-Explicit auth policy
+      - Modify the **AUTH_SESSION_TIMER** variable to reflect needed to store "authenticated" user (shorter times more secure, but validate more often)
+      - Modify the **DEBUG_AUTH** variable to enable/disable debug logging to /var/log/ltm
+      - Modify the **FAILED_AUTH_ATTEMPTS** variable to enable and set a failed logon attempt counter
+      - Modify the **FAILED_AUTH_TIMER** variable to adjust the time (in seconds) to track failed logon attempts for a connection
