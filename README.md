@@ -11,6 +11,8 @@ This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
 - Create a normal SWG-Explicit auth policy with Kerberos, ensure that Kerberos auth works as expected (attached to LTM VIP)
 
   `Start -> 407 -> Kerberos Auth -> Allow`
+  
+  ![Consul FQDN Pool](images/consul-fqdn-01.png)
 
 - Remove the 407 agent from the SWG-Explicit auth policy VPE
 
