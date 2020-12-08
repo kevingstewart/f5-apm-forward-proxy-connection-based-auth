@@ -12,7 +12,7 @@ This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
 
   `Start -> 407 -> Kerberos Auth -> Allow`
   
-  ![Consul FQDN Pool](images/consul-fqdn-01.png)
+  ![APM Kerberos VPE](images/apm-kerberos-vpe.png)
 
 - Remove the 407 agent from the SWG-Explicit auth policy VPE
 
