@@ -16,6 +16,7 @@ This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
 - Attach this iRule to the explicit proxy listener virtual server (-xp VIP in SSLO)
 
 - Modify the following static configuration variables as required:
+
       - Modify the **AUTH_PROFILE** variable to reflect the name of the SWG-Explicit auth policy
       - Modify the **AUTH_SESSION_TIMER** variable to reflect needed to store "authenticated" user (shorter times more secure, but validate more often)
       - Modify the **DEBUG_AUTH** variable to enable/disable debug logging to /var/log/ltm
