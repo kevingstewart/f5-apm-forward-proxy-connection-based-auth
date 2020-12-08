@@ -39,11 +39,6 @@ when RULE_INIT {
     set static::FAILED_AUTH_TIMER 5
 }
 
-when HTTP_REQUEST {
-    ## force HTTP traffic to tunnel VIP
-    virtual "/Common/test-bofa-tcp-tunnel-vip" [HTTP::proxy addr] [HTTP::proxy port]
-}
-
 ## NO NEED TO MODIFY BEYOND THIS POINT ##
 
 proc SEND_AUTH_REQUEST { } {
