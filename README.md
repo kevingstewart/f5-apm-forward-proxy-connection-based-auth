@@ -9,7 +9,8 @@ This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
 
 ### How to install
 - Create a normal SWG-Explicit auth policy with Kerberos, ensure that Kerberos auth works as expected (attached to LTM VIP)
-      `Start -> 407 -> Kerberos Auth -> Allow`
+
+  `Start -> 407 -> Kerberos Auth -> Allow`
 
 - Remove the 407 agent from the SWG-Explicit auth policy VPE
 
