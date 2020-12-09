@@ -24,7 +24,7 @@ It is generally not possible to attach an access policy and per-request policy t
 It would be possible, however, with SSL Forward Proxy configured on the TCP tunnel VIP to decrypt outbound traffic, to attach an access policy and per-request policy here. The iRule minimally collects the **session.logon.last.username** value from the sideband authentication and populates a session table entry. The table "key" is derived from the source IP amd first 400 characters of the encoded Kerberos ticket. At the end of the iRule, if a value exists in the table entry, a sharedvar is created. 
 
 - Change the Profile Scope of the frontend Kerberos sideband authentication policy to "Named" and enter a unique Named Scope string (ex. SSLO).
-- Create SSLFWD client and server SSL profiles and attach to the TCP tunnel VIP. Ensure that traffic still flows and that sites are correctly decrypted (you will see a serer certificate issued by the local CA).
+- Create SSLFWD client and server SSL profiles and attach to the TCP tunnel VIP. Ensure that traffic still flows and that sites are correctly decrypted (you will see a server certificate issued by the local CA).
 - Create an SWG-Explicit access profile, select "Named" Profile Scope and enter the same scope name used above. In the VPE, set Start -> Allow.
 - Create the following iRule and attach to the TCP tunnel VIP, to collect the sharedvar variable from the sideband iRule and insert into a perflow variable:
 
