@@ -35,7 +35,9 @@ It would be possible, however, with SSL Forward Proxy configured on the TCP tunn
           }
       }
 
-- Create a Per-Request policy of type 'All'. In the VPE, minimally add an iRule aganet at the beginning with Expect Data set to "HTTP". 
+- Create a Per-Request policy of type 'All'. In the VPE, minimally add an iRule agent at the beginning with Expect Data set to "HTTP". 
 
-The iRule event calls the iRule on the TCP tunnel VIP and collects the authenticated username from the sharedvar variable and pushes to a perflow variable. From there add any additional logic as needed. It may also be *more* efficient to perform any directory service queries in the sideband Kerberos policy (one time per authentication step vs. per-request), and send those in the sharedvar variable (as a list object).
+The iRule event in the Per-Request policy calls the iRule on the TCP tunnel VIP and collects the authenticated username from the sharedvar variable and pushes to a perflow variable. From there add any additional logic as needed. It may also be *more* efficient to perform any directory service queries in the sideband Kerberos policy (one time per authentication step vs. per-request), and send those in the sharedvar variable (as a list object).
+
+Also note that you should not perform any logic in the SWG-Explicit access policy attached to the TCP tunnel VIP, as there will be ONE access policy created for each source IP address (could be multiple users). Processing in the Per-Request policy, based on logon information collected in the sideband Kerberos authentication iRule ensures that policy processing is unique to each user request.
 
