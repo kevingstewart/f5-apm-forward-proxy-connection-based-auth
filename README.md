@@ -8,24 +8,3 @@ There are different versions of the iRule for explicit and transparent forward p
 
 ### Version support
 This iRule works on BIG-IP 14.1 and above, SSL Orchestrator 5.x and above.
-
-### How to install
-- Create a normal SWG-Explicit auth policy with Kerberos, attach to the explicit proxy VIP and ensure that Kerberos auth works as expected.
-
-  `Start -> 407 -> Kerberos Auth -> Allow`
-  
-  ![APM Kerberos VPE](images/apm-kerberos-vpe1.png)
-
-- Remove the 407 agent from the SWG-Explicit auth policy VPE, and remove the auth policy from the explicit proxy VIP.
-
-- Attach this iRule to the explicit proxy VIP (-xp VIP in SSLO).
-
-- Modify the following static configuration variables as required:
-  - Modify the **AUTH_PROFILE** variable to reflect the name of the SWG-Explicit auth policy
-  - Modify the **AUTH_SESSION_TIMER** variable to reflect needed to store "authenticated" user (shorter times more secure, but validate more often)
-  - Modify the **DEBUG_AUTH** variable to enable/disable debug logging to /var/log/ltm
-  - Modify the **FAILED_AUTH_ATTEMPTS** variable to enable and set a failed logon attempt counter
-  - Modify the **FAILED_AUTH_TIMER** variable to adjust the time (in seconds) to track failed logon attempts for a connection
-
-### Caveats
-This iRule will generally not integrate with per-request policies.
