@@ -28,12 +28,12 @@ It would be possible, however, with SSL Forward Proxy configured on the TCP tunn
 - Create an SWG-Explicit access profile, select "Named" Profile Scope and enter the same scope name used above. In the VPE, set Start -> Allow.
 - Create the following iRule and attach to the TCP tunnel VIP, to collect the sharedvar variable from the sideband iRule and insert into a perflow variable:
 
-    when ACCESS_PER_REQUEST_AGENT_EVENT {
-        sharedvar THISUSER
-        if { [info exists THISUSER] } {
-            ACCESS::perflow set perflow.custom ${THISUSER}
-        }
-    }
+      when ACCESS_PER_REQUEST_AGENT_EVENT {
+          sharedvar THISUSER
+          if { [info exists THISUSER] } {
+              ACCESS::perflow set perflow.custom ${THISUSER}
+          }
+      }
 
 - Create a Per-Request policy of type 'All'. In the VPE, minimally add an iRule aganet at the beginning with Expect Data set to "HTTP". 
 
